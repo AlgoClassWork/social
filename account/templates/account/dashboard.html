@@ -1,0 +1,29 @@
+{% extends "account/base.html" %}
+
+{% block content %}
+    <h1>Лента активности 📷</h1>
+    <h2>Мои подписки</h2>
+    {% if request.user.following.all %}
+        <div>
+            {% for contact in request.user.following.all %}
+                <div class="image">
+                    <a href="{% url 'user_detail' contact.user_to.pk %}">{{ contact.user_to.username }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>У вас нет подписок 😔</p>
+    {% endif %}
+    <h2>Посты</h2>
+    {% if images %}
+        {% for image in images %}
+            <div class="image">
+                <h3>{{ image.title }}</h3>
+                <img src="{{ image.image.url }}" alt="{{ image.title }}">
+                <p>Автор: <a href="{% url 'user_detail' image.user.pk %}">{{ image.user.username }}</a></p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Нет изображений, подпишись на пользователей! 😔</p>
+    {% endif %}
+{% endblock %}

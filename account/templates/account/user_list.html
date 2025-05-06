@@ -1,0 +1,25 @@
+{% extends "account/base.html" %}
+
+{% block content %}
+    <h1>Пользователи 📋</h1>
+    {% for user in users %}
+        {% if user != request.user %}
+            <div class="image">
+                <a href="{% url 'user_detail' user.pk %}">{{ user.username }}</a>
+                <form method="post" action="{% url 'user_follow' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ user.id }}">
+                    {% if user.is_following %}
+                        <input type="hidden" name="action" value="unfollow">
+                        <button type="submit">Отписаться</button>
+                        <span style="color: blue;">(Вы подписаны)</span>
+                    {% else %}
+                        <input type="hidden" name="action" value="follow">
+                        <button type="submit">Подписаться</button>
+                        <span style="color: red;">(Не подписаны)</span>
+                    {% endif %}
+                </form>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,154 @@
+body {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(90deg, #ffffff, #e0e0e0);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+header nav {
+  margin: 10px 0;
+}
+
+header nav a {
+  color: #4a90e2;
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #357abd;
+}
+
+header form {
+  display: inline;
+  margin-left: 20px;
+}
+
+header button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+header button:hover {
+  background-color: #c0392b;
+}
+
+main {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.image {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid #eeeeee;
+}
+
+.image h3 {
+  color: #2c3e50;
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.image p {
+  color: #7f8c8d;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.image a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.image a:hover {
+  text-decoration: underline;
+}
+
+form {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #219653;
+}
+
+span {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+div {
+  margin-bottom: 15px;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  header h1 a {
+      font-size: 24px;
+  }
+  header nav a {
+      margin: 0 8px;
+      font-size: 14px;
+  }
+  main {
+      margin: 15px;
+      padding: 0 10px;
+  }
+  .image {
+      padding: 15px;
+  }
+}

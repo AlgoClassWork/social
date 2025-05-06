@@ -1,0 +1,18 @@
+{% extends "account/base.html" %}
+
+{% block content %}
+    <h1>Профиль {{ user.username }} 📷</h1>
+    <p>Дата рождения: {{ user.profile.date_of_birth|default:"Не указана" }}</p>
+    {% if user.profile.photo %}
+        <img src="{{ user.profile.photo.url }}" alt="Фото профиля" width="100">
+    {% endif %}
+    <h2>Посты</h2>
+    {% for image in images %}
+        <div class="image">
+            <h3>{{ image.title }}</h3>
+            <img src="{{ image.image.url }}" alt="{{ image.title }}">
+        </div>
+    {% empty %}
+        <p>Нет постов 😔</p>
+    {% endfor %}
+{% endblock %}

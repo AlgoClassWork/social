@@ -1,0 +1,10 @@
+<!-- Страница одного изображения -->
+{% extends "account/base.html" %}
+
+{% block content %}
+  <h1>{{ image.title }} 📷</h1>
+  <img src="{{ image.image.url }}" alt="{{ image.title }}" width="300">
+  <p>Автор: <a href="{% url 'user_detail' image.user.username %}">{{ image.user.username }}</a></p>
+  <p>{{ image.description }}</p>
+  <p>Загружено: {{ image.created|date:"d.m.Y" }}</p>
+{% endblock %}

@@ -1,0 +1,11 @@
+<!-- Страница для загрузки изображения -->
+{% extends "account/base.html" %}
+
+{% block content %}
+  <h1>Добавить изображение 📸</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }} <!-- Поля формы -->
+    <button type="submit">Загрузить</button>
+  </form>
+{% endblock %}
