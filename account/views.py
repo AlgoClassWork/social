@@ -73,3 +73,26 @@ class UserListView(LoginRequiredMixin, ListView):
         for user in context['users']:
             user.is_following = Contact.objects.filter(user_from=self.request.user, user_to=user).exists()
         return context
+
+class UserDetailView(LoginRequiredMixin, DetailView):
+    model = User 
+    template_name = 'account/user_detail.html'
+    context_object_name = 'user'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['images'] = Image.objects.filter(user=self.get_object())
+        return context
+    
+class UserFollowView(LoginRequiredMixin, View):
+    def post(self, request):
+        user_id = request.POST.get('id')
+        action = request.POST.get('action')
+        if user_id and action:
+            user = User.objects.get(id=user_id)
+            if action == 'follow':
+                Contact.objects.get_or_create(user_from=request.user, user_to=user)
+            elif action == 'unfollow':
+                Contact.objects.filter(user_from=request.user, user_to=user).delete()
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER','account/users/'))
+        return HttpResponseRedirect('account/users/')
